@@ -4,6 +4,8 @@ import kotlin.math.*
 
 class MathExpressionEvaluator {
 
+    private val pi = (355/113).toDouble()
+
     fun evaluate(expression: String): String {
         return try {
             calculate(expression).toString()
@@ -47,9 +49,9 @@ class MathExpressionEvaluator {
                             val a = stack.pop()
                             stack.push(a.pow(b))
                         }
-                        "sin" -> stack.push(sin(stack.pop()))
-                        "cos" -> stack.push(cos(stack.pop()))
-                        "tan" -> stack.push(tan(stack.pop()))
+                        "sin" -> stack.push(Math.round(sin(stack.pop())).toDouble())
+                        "cos" -> stack.push(Math.round(cos(stack.pop())).toDouble())
+                        "tan" -> stack.push(Math.round(tan(stack.pop())).toDouble())
                         "log" -> stack.push(log10(stack.pop()))
                         "ln" -> stack.push(ln(stack.pop()))
                         "√" -> stack.push(sqrt(stack.pop()))
@@ -80,6 +82,9 @@ class MathExpressionEvaluator {
                     }
                     if (stack.isNotEmpty() && stack.last() == "(") {
                         stack.pop() // Discard the opening parenthesis
+                    }
+                    if (stack.isNotEmpty() && stack.last().isFunction()) {
+                        output.add(stack.pop()) // Pop function if exists before '('
                     }
                 }
                 token.isOperator() -> {
@@ -123,7 +128,7 @@ class MathExpressionEvaluator {
 
     private fun String.toConstantValue(): Double {
         return when (this) {
-            "π" -> PI
+            "π" -> pi
             "e" -> E
             else -> throw IllegalArgumentException("Invalid constant: $this")
         }

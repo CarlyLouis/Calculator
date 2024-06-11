@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 class CalculatorViewModel:ViewModel() {
     val inputExpression = mutableStateOf("")
     val output = mutableStateOf("0")
-    val evaluator = MathExpressionEvaluator()
+    private val evaluator = MathExpressionEvaluator()
 
 
     fun onUiEvent(uiEvent: UiEvent) {
