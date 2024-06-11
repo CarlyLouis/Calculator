@@ -14,11 +14,11 @@ This is an advanced calculator that follows the PEMDAS order of operations. The 
 
 The calculator's user interface is designed with Jetpack Compose, ensuring a smooth and intuitive user experience. Below are some screenshots of the application:
 
-![Screenshot 1](Screenshot_1)
-![Screenshot 2](Screenshot_2)
-![Screenshot 3](Screenshot_3)
-![Screenshot 4](Screenshot_4)
-![Screenshot 5](Screenshot_5)
+![Screenshot 1](Screenshot_1.png)
+![Screenshot 2](Screenshot_2.png)
+![Screenshot 3](Screenshot_3.png)
+![Screenshot 4](Screenshot_4.png)
+![Screenshot 5](Screenshot_5.png)
 
 ## Getting Started
 
