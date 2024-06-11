@@ -46,7 +46,7 @@ class CalculatorViewModel:ViewModel() {
     }
 
     private fun updateInput(character: String) {
-        if (output.value != "0" && character in "(eπ+-x/" ){
+        if (output.value != "0" && character in "(eπ+-x/)(" ){
             inputExpression.value = output.value + character
             output.value = "0"
         }
