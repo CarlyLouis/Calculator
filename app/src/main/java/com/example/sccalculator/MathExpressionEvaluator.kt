@@ -49,9 +49,33 @@ class MathExpressionEvaluator {
                             val a = stack.pop()
                             stack.push(a.pow(b))
                         }
-                        "sin" -> stack.push(Math.round(sin(stack.pop())).toDouble())
-                        "cos" -> stack.push(Math.round(cos(stack.pop())).toDouble())
-                        "tan" -> stack.push(Math.round(tan(stack.pop())).toDouble())
+                        "sin" ->{
+                            val y = sin(stack.pop())
+                            val z = y.toString()
+                            if (z.contains(".0")||z.contains(".1")||
+                                z.contains(".9")||z.contains(".2")){
+                            stack.push(Math.round(y).toDouble())
+                            }
+                            else stack.push(y)
+                        }
+                        "cos" ->{
+                            val y = cos(stack.pop())
+                            val z = y.toString()
+                            if (z.contains(".0")||z.contains(".1")||
+                                z.contains(".9")||z.contains(".2")){
+                                stack.push(Math.round(y).toDouble())
+                            }
+                            else stack.push(y)
+                        }
+                        "tan" ->{
+                            val y = tan(stack.pop())
+                            val z = y.toString()
+                            if (z.contains(".0")||z.contains(".1")||
+                                z.contains(".9")||z.contains(".2")){
+                                stack.push(Math.round(y).toDouble())
+                            }
+                            else stack.push(y)
+                        }
                         "log" -> stack.push(log10(stack.pop()))
                         "ln" -> stack.push(ln(stack.pop()))
                         "√" -> stack.push(sqrt(stack.pop()))

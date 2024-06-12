@@ -46,8 +46,13 @@ class CalculatorViewModel:ViewModel() {
     }
 
     private fun updateInput(character: String) {
-        if (output.value != "0" && character in "(eπ+-x/)(" ){
+        if (output.value != "0" && character in "+-x/" ){
             inputExpression.value = output.value + character
+            output.value = "0"
+        }
+
+        else if (output.value != "0" && character in "π)(sin(cos(tan(log(e"){
+            inputExpression.value = character
             output.value = "0"
         }
 
