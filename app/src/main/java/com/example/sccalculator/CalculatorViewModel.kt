@@ -97,8 +97,8 @@ class CalculatorViewModel:ViewModel() {
     }
 
     private fun calculate(){
-        var result = evaluator.evaluate(inputExpression.value) // Call evaluate on the instance
-        //return result  // Return the calculated result
+        val expression = insertMultiplicationSign()
+        var result = evaluator.evaluate(expression) // Call evaluate on the instance
         if (result.endsWith(".0")){ result = result.replace(".0", "") }
         output.value = result
     }
@@ -111,5 +111,22 @@ class CalculatorViewModel:ViewModel() {
     private fun noChange() {
         inputExpression.value = inputExpression.value
         output.value = output.value
+    }
+
+    fun insertMultiplicationSign(): String {
+        val input= inputExpression.value
+        val specialChars = setOf('s', 'c', 't', 'l', 'e', 'π', '(', '√')
+        val precedingChars = setOf('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ')')
+        val result = StringBuilder(input)
+
+        var i = 1  // Start from 1 to check the preceding character
+        while (i < result.length) {
+            if (result[i] in specialChars && result[i - 1] in precedingChars) {
+                result.insert(i, 'x')
+                i++  // Skip the newly inserted character
+            }
+            i++
+        }
+        return result.toString()
     }
 }

@@ -4,7 +4,6 @@ import kotlin.math.*
 
 class MathExpressionEvaluator {
 
-    private val pi = (355/113).toDouble()
 
     fun evaluate(expression: String): String {
         return try {
@@ -152,7 +151,7 @@ class MathExpressionEvaluator {
 
     private fun String.toConstantValue(): Double {
         return when (this) {
-            "π" -> pi
+            "π" -> PI
             "e" -> E
             else -> throw IllegalArgumentException("Invalid constant: $this")
         }
